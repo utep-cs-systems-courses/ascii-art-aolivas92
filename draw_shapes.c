@@ -29,7 +29,31 @@ void print_triangle(int leftCol, int size)
 /* print_arrow: uses print_square and print_arrow to print */
 void print_arrow(int leftCol, int size)
 { 
-  print_triangle(leftCol, size);
+  //print_triangle(leftCol, size);
+  //print_square(leftCol+3, size);
 
-  print_square(leftCol+3, size);
+  int row;
+  
+  /* Add the triangle on the top */
+  for (row = 0; row <= size; row++) {
+    int minCol = leftCol + size - row, maxCol = leftCol + size + row;
+    int col;
+    for (col = 0; col < minCol; col++)
+      putchar(' ');
+    for (  ; col <= maxCol; col++)
+      putchar('*');
+    putchar('\n');
+  }
+
+  /* Add the square below */
+  leftCol += 3;
+  int endCol = leftCol + size;
+  for (row = 0; row < size; row++) {
+    int col;
+    for (col = 0; col < leftCol; col++)
+      putchar(' ');
+    for (  ; col < endCol; col++)
+      putchar('*');
+    putchar('\n');
+  }
 }
